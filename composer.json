@@ -1,0 +1,74 @@
+{
+    "name": "omersolmaz/flarum-ext-bot",
+    "description": "Hugging Face modellerini kullanarak forumda içerik üreten bot eklentisi",
+    "keywords": ["flarum", "extension", "bot", "ai", "hugging-face"],
+    "type": "flarum-extension",
+    "license": "MIT",
+    "require": {
+        "flarum/core": "^1.0.0",
+        "guzzlehttp/guzzle": "^7.0"
+    },
+    "authors": [
+        {
+            "name": "Ömer Faruk Solmaz",
+            "email": "omersolmaz6578@outlook.com",
+            "homepage": "https://github.com/omersolmaz"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "OmerSolmaz\\BotExtension\\": "src/"
+        }
+    },
+    "extra": {
+        "flarum-extension": {
+            "title": "AI Bot Eklentisi",
+            "category": "feature",
+            "icon": {
+                "name": "fas fa-robot",
+                "backgroundColor": "#238C59",
+                "color": "#fff"
+            }
+        },
+        "flarum-cli": {
+            "modules": {
+                "admin": true,
+                "forum": true,
+                "js": true,
+                "jsCommon": false,
+                "css": true,
+                "locale": true,
+                "gitConf": true,
+                "githubActions": true,
+                "prettier": true,
+                "typescript": false,
+                "bundlewatch": false,
+                "backendTesting": false,
+                "editorConfig": true,
+                "styleci": true
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "scripts": {
+        "build": [
+            "@css",
+            "@js"
+        ],
+        "js": [
+            "npm run build"
+        ],
+        "css": [
+            "npm run build"
+        ],
+        "format": [
+            "prettier --write src",
+            "prettier --write js"
+        ],
+        "analyze": [
+            "source-map-explorer js/dist/forum.js",
+            "source-map-explorer js/dist/admin.js"
+        ]
+    }
+}
